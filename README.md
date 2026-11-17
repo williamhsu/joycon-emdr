@@ -2,7 +2,7 @@
 
 A free, open-source web app that turns a pair of Nintendo Joy-Con controllers into alternating left-right tactile tappers for EMDR-style bilateral stimulation. It runs entirely in the browser over [WebHID](https://developer.mozilla.org/en-US/docs/Web/API/WebHID_API): no install, no account, nothing leaves your computer.
 
-**Live app:** https://williamhsu.github.io/joycon-emdr/
+**Live app:** https://www.therajoyapp.com/joy-con-emdr/ (mirror: https://williamhsu.github.io/joycon-emdr/)
 
 ## What it does
 
