@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joy-Con EMDR: Bilateral Stimulation in the Browser</title>
+<meta name="description" content="Free, open-source web app that turns a pair of Nintendo Joy-Con controllers into alternating tactile tappers for EMDR bilateral stimulation. Runs in Chrome or Edge on a computer over WebHID.">
+<link rel="canonical" href="https://williamhsu.github.io/joycon-emdr/">
+<meta property="og:title" content="Joy-Con EMDR: Bilateral Stimulation in the Browser">
+<meta property="og:description" content="Open-source web app: pair two Joy-Cons and get alternating left-right taps, with speed, intensity and an optional light bar and panned audio.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <h1>Joy-Con EMDR</h1>
+    <p class="lede">Turn a pair of Nintendo Joy-Con controllers into alternating tactile tappers for bilateral stimulation, right in the browser. Free and open source.</p>
+  </header>
+
+  <section id="support" class="note" hidden>
+    <strong>This browser can't talk to controllers.</strong>
+    Joy-Con support needs WebHID, which works in Chrome, Edge or Opera on a Mac, Windows, Linux or ChromeOS computer. It does not work on iPhone, iPad, Android, Safari or Firefox.
+    You can still use the light bar and audio below. On iPhone or iPad, the <a href="https://www.therajoyapp.com/joy-cons-for-emdr">TheraJoy app</a> drives Joy-Cons natively.
+  </section>
+
+  <section class="card">
+    <h2>1. Connect</h2>
+    <ol class="steps">
+      <li>Pair both Joy-Cons with your computer in its Bluetooth settings: hold the small sync button on each until the lights scroll. (<a href="https://www.therajoyapp.com/connect-joy-cons">Pairing guide</a>)</li>
+      <li>Click <em>Connect Joy-Cons</em> and pick both controllers (hold Shift or Cmd/Ctrl to select two).</li>
+    </ol>
+    <div class="row">
+      <button id="connect" class="btn">Connect Joy-Cons</button>
+      <button id="test" class="btn ghost" disabled>Test buzz</button>
+    </div>
+    <div class="pads">
+      <div class="pad" id="padL"><span class="dot"></span>Left<small id="stL">not connected</small></div>
+      <div class="pad" id="padR"><span class="dot"></span>Right<small id="stR">not connected</small></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>2. Set it up</h2>
+    <label class="ctl">Speed <output id="speedOut"></output>
+      <input id="speed" type="range" min="0.5" max="3" step="0.1" value="1">
+    </label>
+    <label class="ctl">Intensity <output id="intOut"></output>
+      <input id="intensity" type="range" min="1" max="10" step="1" value="5">
+    </label>
+    <label class="ctl">Tap length <output id="lenOut"></output>
+      <input id="length" type="range" min="60" max="400" step="10" value="160">
+    </label>
+    <label class="ctl">Set length <output id="setOut"></output>
+      <input id="set" type="range" min="0" max="120" step="2" value="24">
+    </label>
+    <div class="row toggles">
+      <label><input id="useHaptic" type="checkbox" checked> Joy-Con taps</label>
+      <label><input id="useLight" type="checkbox"> Light bar</label>
+      <label><input id="useSound" type="checkbox"> Panned audio (headphones)</label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>3. Run</h2>
+    <div class="bar" id="bar" aria-hidden="true"><span id="ball"></span></div>
+    <div class="row">
+      <button id="start" class="btn big">Start</button>
+      <span class="count" id="count">0 taps</span>
+    </div>
+    <p class="hint">Space bar starts and stops. Taps stop on their own at the end of a set.</p>
+  </section>
+
+  <section class="card prose">
+    <h2>About</h2>
+    <p>EMDR is a psychotherapy delivered by a trained clinician. This tool only produces alternating left-right stimulation; it is not a medical device and does not provide therapy. If you are working through trauma, do it with a qualified therapist.</p>
+    <p>Why Joy-Cons: each one is a separate, wireless controller with a precise linear actuator, so you get a crisp tap in each hand with clean left-right separation. A used pair costs far less than dedicated EMDR pulsers. More on <a href="https://www.therajoyapp.com/joy-cons-for-emdr">Joy-Cons for EMDR</a>.</p>
+    <p>Made by <a href="https://www.therajoyapp.com/">TheraJoy</a>, the iPhone app for bilateral stimulation with Joy-Cons, phone haptics, light bar and audio. Source on <a href="https://github.com/williamhsu/joycon-emdr">GitHub</a> (MIT). Not affiliated with or endorsed by Nintendo.</p>
+  </section>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>
